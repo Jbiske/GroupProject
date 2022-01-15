@@ -1,4 +1,4 @@
-var searchInput = document.querySelector("#author");
+var searchInput = document.querySelector("#book");
 var searchEl = document.querySelector("#search-form");
 var resultContainer = document.querySelector(".resultContainer")
 
