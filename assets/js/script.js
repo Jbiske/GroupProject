@@ -39,14 +39,34 @@ var listBooks = function (bookSearch) {
     for (var i = 0; i < totalBooks.length; i++) {
         var bookName = totalBooks[i].title;
         console.log(bookName);
+        if (totalBooks[i].lending_edition_s) {
 
-        var bookText = document.createElement("p")
-        bookText.textContent = bookName;
+            // adds name of book title
+            var bookText = document.createElement("p")
+            bookText.textContent = bookName;
 
+            // Adds book's author
+            var bookAuthor = document.createElement("p")
+            bookAuthor.textContent = "By: " + totalBooks[i].author_name;
+
+            // adds link to book info which could also include review
+            var bookInfoLink = document.createElement("a")
+            bookInfoLink.textContent = "Book info";
+            bookInfoLink.href = "https://openlibrary.org" + totalBooks[i].key;
+            bookInfoLink.target = "_blank";
+            console.log(totalBooks[i].key)
+
+            // adds book's image
+            var bookImg = document.createElement("img")
+            bookImg.src = "https://covers.openlibrary.org/b/id/" + totalBooks[i].cover_i + "-M.jpg";
+        }
+
+        // appends elements to page
         resultContainer.appendChild(bookText);
-
+        resultContainer.appendChild(bookAuthor);
+        resultContainer.appendChild(bookInfoLink);
+        resultContainer.appendChild(bookImg);
     };
-
 }
 
-searchEl.addEventListener("submit", searchBook)
+searchEl.addEventListener("submit", searchBook);
