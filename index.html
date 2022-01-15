@@ -1,74 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         
+        <title>Novel Experiences</title> 
 
-<head>
-    <title>Novel Experiences</title>
-    <link rel="stylesheet" href="" />
-</head>
-<!-- Body -->
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!-- Our stylesheet -->
+        <link rel="stylesheet" href="assets/css/styles.css">
+    </head>
 
 <body>
-    <!-- Title -->
-    <div>
-        <h1> Novel Experiences</h1>
-
-    </div>
-    <!-- Search Bar -->
-    <form action="" id="search-form">
-        <h2>Search for Author</h2>
-        <input type="text" id="author">
-        <button id="searchBtn">Search Author</button>
-    </form>
-    <div>
-
-
-
-    </div>
-
-    <!-- Hero Image -->
-    <div>
-        <img> </img>
-
-    </div>
-
-
-    <!-- Search Results -->
-    <div class="resultContainer">
-
-
-    </div>
-
-
-    <!-- Recent Searches -->
-    <div>
-        <h2> Recent Searches</h2>
-
-
-    </div>
+    <header>
+        <!-- Title -->
+        <nav class="cyan darken-4 col s12">
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo center">Novel Experiences</a>
+            </div>
+        </nav>
+    </header>
 
 
 
 
-    <!-- Popular Books -->
-    <div>
-        <h2>Popular Books</h2>
+    <main class="container">
+        <!-- Hero Image -->
+        <div class="hero">
+            <img src="http://placekitten.com/700/300"> 
+
+        </div>
+        <!-- Search Bar -->
+        <div>
+            <form action="" id="search-form">
+                <h2>Search for Book</h2>
+                <input type="text" id="book" placeholder="Book Name...">
+                <button id="searchBtn">Search Book</button>
+            </form>
+        </div>
+
+        <!-- Search Results -->
+        <div class="resultContainer">
 
 
-    </div>
+        </div>
+
+
+        <!-- Recent Searches -->
+        <div>
+            <h2 class="header"> Recent Searches</h2>
+
+
+        </div>
 
 
 
-    <!-- Footer -->
-    <footer>
-        <h3>About</h3>
-        <h3> FAQ</h3>
-        <h3> Contact us </h3>
+
+        <!-- Popular Books -->
+        <div class="col s12 m7">
+            <h2 class="header">Popular Books</h2>
+
+            <div class="card horizontal">
+                <div class="card-image">
+                <img src="https://placekitten.com/200/300" />
+                </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt blanditiis ex omnis voluptates recusandae ut? Optio tempore repellat perspiciatis quasi sequi! Dignissimos distinctio atque vero vitae, deleniti qui optio eius?
+                    </p>
+                </div>
+                <div class="card-action">
+                    <a href="#" class="cyan darken-4">This is a link</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+                    
+
+        </div>
 
 
-    </footer>
+
+        <!-- Footer -->
+        <footer>
+            <h3>About</h3>
+            <h3> FAQ</h3>
+            <h3> Contact us </h3>
 
 
-    <script src="./assets/js/script.js"></script>
+        </footer>
+
+    </main>
+    <script src="assets/js/script.js"></script>
 </body>
 
 
