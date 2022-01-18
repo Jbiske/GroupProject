@@ -13,7 +13,9 @@
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+    
+    <!-- icons stylesheet -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Our stylesheet -->
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
@@ -21,28 +23,31 @@
 <body>
     <header>
         <!-- Title -->
-        <nav class="cyan darken-4 col s12">
-            <div class="nav-wrapper">
-                <a href="#!" class="brand-logo center">Novel Experiences</a>
-            </div>
-        </nav>
+            <nav>
+                <div class="nav-wrapper cyan darken-4">
+                    <a href="#!" class="brand-logo center">
+                        <i class="material-icons">book</i>Novel Experiences
+                    </a>
+                </div>
+            </nav>
+        <!-- </div> -->
     </header>
 
-
-
-
-    <main class="container">
+    <main>
+        <div class="container">
         <!-- Hero Image -->
         <div class="hero">
-            <img src="http://placekitten.com/700/300">
-
+            <img src="assets/images/hero.jpg">
         </div>
         <!-- Search Bar -->
         <div>
             <form action="" id="search-form">
-                <h2>Search for Book</h2>
-                <input type="text" id="book" placeholder="Book Name...">
-                <button id="searchBtn">Search Book</button>
+                <h2 >Book Search</h2>
+                <div class="row">
+                    <input class="col s10" type="text" id="book" placeholder="Book Name...">
+                    <button class="btn-large col s2" type="submit" id="searchBtn">
+                        <i class="material-icons large">search</i></button>
+                </div>
             </form>
         </div>
 
@@ -67,10 +72,10 @@
         <div class="col s12 m7 popularContainer">
             <h2 class="header">Popular Books</h2>
 
-            <div class="card horizontal ">
-                <!-- <div class="card-image"> -->
+            <!-- <div class="card horizontal">
+               <div class="card-image">
                 <img class="card-image" src="https://placekitten.com/200/300" />
-                <!-- </div> -->
+                </div> 
                 <div class="card-stacked">
                     <div class="card-content">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt blanditiis ex omnis voluptates
@@ -82,13 +87,13 @@
                         <a href="#" class="cyan darken-4">This is a link</a>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div> -->
+            <!-- </div> -->
 
 
         </div>
 
-
+    </div>
 
         <!-- Footer -->
         <footer>
