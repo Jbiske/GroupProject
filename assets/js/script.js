@@ -224,12 +224,24 @@ searchEl.addEventListener("submit", searchBook);
 resultContainer.addEventListener("click", function (event) {
     if (event.target.matches("img")) {
         console.log(event.target.parentNode);
-        var saveimg = event.target.src;
-        console.log(saveimg)
+        var saveImg = event.target.src;
+        console.log(saveImg)
 
         var linkValue = event.target.link;
         console.log(linkValue)
-        // recentSearchEl.appendChild(saveimg);
+
+        var infoLink = document.createElement("a")
+        infoLink.href = linkValue;
+        infoLink.target = "_blank";
+
+        var bookImg = document.createElement("img")
+        bookImg.className = "card-image"
+        bookImg.src = saveImg;
+
+        infoLink.appendChild(bookImg);
+        recentSearchEl.appendChild(infoLink);
+
+
     }
 });
 
