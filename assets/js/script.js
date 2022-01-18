@@ -1,6 +1,8 @@
 var searchInput = document.querySelector("#book");
 var searchEl = document.querySelector("#search-form");
-var resultContainer = document.querySelector(".resultContainer")
+var resultContainer = document.querySelector(".resultContainer");
+var popularContainerEl = document.querySelector(".popularContainer");
+var recentSearchEl = document.querySelector(".recentSearch");
 
 console.log(searchEl);
 
@@ -83,6 +85,7 @@ var listBooks = function (bookSearch) {
             if (totalBooks[i].cover_i) {
                 bookImg.src = "https://covers.openlibrary.org/b/id/" + totalBooks[i].cover_i + "-M.jpg";
                 bookImg.alt = "Image of " + bookName + " book";
+                bookImg.link = "https://openlibrary.org" + totalBooks[i].key;
             }
             else {
                 bookImg.alt = "Image of book does not exist";
@@ -103,5 +106,143 @@ var listBooks = function (bookSearch) {
 
     };
 }
+var popularbook = function () {
+    var bookTypeApiURL = "https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=LwhrCivpjVUn7aHdoGyFgKbhLI9dumRs";
+    var bookType = "";
+    fetch(bookTypeApiURL)
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (data) {
+                    var bookTypeData = data.results;
+                    bookType = randomBookType(bookTypeData);
+                    randomTopSeller(bookType);
+                })
+            }
+
+        })
+        .catch(function (error) {
+            // alert if something goes wrong
+            alert("There is an error with request");
+        });
+
+}
+var randomBookType = function (data) {
+    var bookTypeLength = data.length;
+    var randomType = Math.floor(Math.random() * bookTypeLength);
+    var bookType = data[randomType].list_name_encoded;
+
+    return bookType;
+}
+var randomTopSeller = function (bookType) {
+    var popularBookApi = "https://api.nytimes.com/svc/books/v3/lists/current/" + bookType + ".json?api-key=LwhrCivpjVUn7aHdoGyFgKbhLI9dumRs";
+    fetch(popularBookApi)
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (data) {
+                    var popularCategory = data.results.display_name;
+                    var popularBook = data.results.books;
+                    console.log(popularCategory);
+                    listTopSeller(popularBook);
+                    console.log(popularBook);
+
+                })
+            }
+
+        })
+        .catch(function (error) {
+            // alert if something goes wrong
+            alert("There is an error with request");
+        });
+}
+var listTopSeller = function (data) {
+    if (data.length < 5) {
+        var loopLength = data.length;
+    }
+    else {
+        var loopLength = 5;
+    }
+
+    for (var i = 0; i < loopLength; i++) {
+
+        var bookDiv = document.createElement("div")
+        bookDiv.classList = "card horizontal col small s6 m5 space"
+
+        var bookContentDiv = document.createElement("div")
+        bookContentDiv.className = "card-stacked"
+
+        var bookDetailDiv = document.createElement("div")
+        bookDetailDiv.className = "card-content"
+
+        var linkDiv = document.createElement("div")
+        linkDiv.className = "card-action"
+
+
+        // adds name of book title
+        var bookText = document.createElement("p")
+        bookText.textContent = data[i].title;
+
+        var space = document.createElement("br")
+
+        // Adds book's author
+        var bookAuthor = document.createElement("p")
+        bookAuthor.textContent = "By: " + data[i].author;
+
+        // adds link to book info which could also include review
+
+        var bookInfoLink = document.createElement("a")
+        if (data[i].book_review_link != "") {
+            bookInfoLink.classList = "cyan darken-4"
+            bookInfoLink.textContent = "Book review";
+            bookInfoLink.href = data[i].book_review_link;
+            bookInfoLink.target = "_blank";
+            console.log(data[i].book_review_link);
+        }
+
+        // adds book's image
+        var bookImg = document.createElement("img")
+        bookImg.className = "card-image"
+        bookImg.src = data[i].book_image;
+        bookImg.alt = "Image of " + data[i].title + " book";
+
+        // appends elements to page
+        bookDiv.appendChild(bookImg);
+        bookDiv.appendChild(bookContentDiv);
+        bookContentDiv.appendChild(bookDetailDiv);
+        linkDiv.appendChild(bookInfoLink)
+        bookContentDiv.appendChild(linkDiv);
+
+        bookDetailDiv.appendChild(bookText);
+        bookDetailDiv.appendChild(space);
+        bookDetailDiv.appendChild(bookAuthor);
+        popularContainerEl.appendChild(bookDiv);
+
+    };
+}
 
 searchEl.addEventListener("submit", searchBook);
+
+resultContainer.addEventListener("click", function (event) {
+    if (event.target.matches("img")) {
+        console.log(event.target.parentNode);
+        var saveImg = event.target.src;
+        console.log(saveImg)
+
+        var linkValue = event.target.link;
+        console.log(linkValue)
+
+        var infoLink = document.createElement("a")
+        infoLink.href = linkValue;
+        infoLink.target = "_blank";
+
+        var bookImg = document.createElement("img")
+        bookImg.className = "card-image"
+        bookImg.src = saveImg;
+
+        infoLink.appendChild(bookImg);
+        recentSearchEl.appendChild(infoLink);
+
+
+    }
+});
+
+popularbook(); 
