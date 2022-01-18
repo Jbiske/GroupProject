@@ -4,7 +4,7 @@ var resultContainer = document.querySelector(".resultContainer");
 var popularContainerEl = document.querySelector(".popularContainer");
 var recentSearchEl = document.querySelector(".recentSearch");
 
-console.log(searchEl);
+var savedBooks = [];
 
 // searches for book in api
 var searchBook = function (event) {
@@ -230,19 +230,55 @@ resultContainer.addEventListener("click", function (event) {
         var linkValue = event.target.link;
         console.log(linkValue)
 
-        var infoLink = document.createElement("a")
-        infoLink.href = linkValue;
-        infoLink.target = "_blank";
-
-        var bookImg = document.createElement("img")
-        bookImg.className = "card-image"
-        bookImg.src = saveImg;
-
-        infoLink.appendChild(bookImg);
-        recentSearchEl.appendChild(infoLink);
-
+        createSavedBooks(saveImg, linkValue)
+        saveClicked(saveImg, linkValue);
 
     }
 });
+var createSavedBooks = function (saveImg, linkValue) {
+    var infoLink = document.createElement("a")
+    infoLink.href = linkValue;
+    infoLink.target = "_blank";
 
-popularbook(); 
+    var bookImg = document.createElement("img")
+    bookImg.className = "card-image"
+    bookImg.src = saveImg;
+
+    infoLink.appendChild(bookImg);
+    recentSearchEl.appendChild(infoLink);
+}
+var saveClicked = function (saveImg, linkValue) {
+    var savedObj = {
+        image: saveImg,
+        bookLink: linkValue,
+    }
+    savedBooks.push(savedObj);
+    save();
+}
+
+// function to load recent search list from local storage
+var load = function () {
+    var searchHistory = localStorage.getItem("Novel_Experiences")
+    if (!searchHistory) {
+        return false;
+    }
+    searchHistory = JSON.parse(searchHistory);
+
+    for (i = 0; i < searchHistory.length; i++) {
+        savedBooks.push(searchHistory[i]);
+        var image = searchHistory[i].image;
+        var linkValue = searchHistory[i].bookLink;
+
+        createSavedBooks(image, linkValue);
+
+    }
+
+
+}
+
+var save = function () {
+    localStorage.setItem("Novel_Experiences", JSON.stringify(savedBooks));
+}
+
+popularbook();
+load();
