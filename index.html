@@ -13,7 +13,9 @@
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+    
+    <!-- icons stylesheet -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Our stylesheet -->
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
@@ -23,15 +25,14 @@
         <!-- Title -->
         <nav class="cyan darken-4 col s12">
             <div class="nav-wrapper">
-                <a href="#!" class="brand-logo center">Novel Experiences</a>
+                <a href="#!" class="brand-logo center">
+                    <i class="material-icons">book</i>Novel Experiences
+                </a>
             </div>
         </nav>
     </header>
 
-
-
-
-    <main class="container">
+    <main>
         <!-- Hero Image -->
         <div class="hero">
             <img src="http://placekitten.com/700/300">
@@ -40,9 +41,10 @@
         <!-- Search Bar -->
         <div>
             <form action="" id="search-form">
-                <h2>Search for Book</h2>
+                <h2 class="">Search for Book</h2>
                 <input type="text" id="book" placeholder="Book Name...">
-                <button id="searchBtn">Search Book</button>
+                <button class="btn-large waves-effect waves-light" type="submit" id="searchBtn">
+                    <i class="material-icons">search</i></button>
             </form>
         </div>
 
