@@ -3,6 +3,7 @@ var searchEl = document.querySelector("#search-form");
 var resultContainer = document.querySelector(".resultContainer");
 var popularContainerEl = document.querySelector(".popularContainer");
 var recentSearchEl = document.querySelector(".recentSearch");
+var popularTitle = document.querySelector(".popularBookTitle");
 
 var savedBooks = [];
 
@@ -143,6 +144,7 @@ var randomTopSeller = function (bookType) {
                     var popularBook = data.results.books;
                     console.log(popularCategory);
                     listTopSeller(popularBook);
+                    popularTitle.textContent = "Top 5 " + popularCategory + " books";
                     console.log(popularBook);
 
                 })
@@ -203,6 +205,7 @@ var listTopSeller = function (data) {
         bookImg.className = "card-image"
         bookImg.src = data[i].book_image;
         bookImg.alt = "Image of " + data[i].title + " book";
+        bookImg.link = data[i].amazon_product_url;
 
         // appends elements to page
         bookDiv.appendChild(bookImg);
@@ -235,6 +238,24 @@ resultContainer.addEventListener("click", function (event) {
 
     }
 });
+
+popularContainerEl.addEventListener("click", function (event) {
+    if (event.target.matches("img")) {
+        console.log(event.target.parentNode);
+        var saveImg = event.target.src;
+        console.log(saveImg)
+
+        var linkValue = event.target.link;
+        console.log(linkValue)
+
+        createSavedBooks(saveImg, linkValue)
+        saveClicked(saveImg, linkValue);
+
+    }
+});
+
+
+
 var createSavedBooks = function (saveImg, linkValue) {
     var infoLink = document.createElement("a")
     infoLink.href = linkValue;
