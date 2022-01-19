@@ -1,9 +1,7 @@
-/* img {
-    height: 200px;
+h2 {
+    text-decoration: underline;
 }
-
-.space {
-    margin: 10px;
-    text-align: center;
-    font-size: 1.5em;
-} */
+.card-content p {
+    font-size: 1.2rem;
+    overflow: hidden;
+}
