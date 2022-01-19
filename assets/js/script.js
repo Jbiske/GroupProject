@@ -50,16 +50,16 @@ var listBooks = function (bookSearch) {
             console.log(bookName);
 
             var bookSearchDiv = document.createElement("div")
-            bookSearchDiv.classList = "card horizontal col small s6 m5 space"
+            bookSearchDiv.classList = "card horizontal col small s12 m12 l5"
 
             var bookSearchContentDiv = document.createElement("div")
             bookSearchContentDiv.className = "card-stacked"
 
             var bookDetailDiv = document.createElement("div")
-            bookDetailDiv.className = "card-content"
+            bookDetailDiv.className = "card-content center-align flow-text"
 
             var linkDiv = document.createElement("div")
-            linkDiv.className = "card-action"
+            linkDiv.className = "card-action flow-text"
 
 
             // adds name of book title
@@ -74,7 +74,7 @@ var listBooks = function (bookSearch) {
 
             // adds link to book info which could also include review
             var bookInfoLink = document.createElement("a")
-            bookInfoLink.classList = "cyan darken-4"
+            bookInfoLink.classList = "cyan-text text-darken-4"
             bookInfoLink.textContent = "Book info";
             bookInfoLink.href = "https://openlibrary.org" + totalBooks[i].key;
             bookInfoLink.target = "_blank";
@@ -167,16 +167,16 @@ var listTopSeller = function (data) {
     for (var i = 0; i < loopLength; i++) {
 
         var bookDiv = document.createElement("div")
-        bookDiv.classList = "card horizontal col small s6 m5 space"
+        bookDiv.classList = "card horizontal col small s12 m12 l5 hoverable"
 
         var bookContentDiv = document.createElement("div")
         bookContentDiv.className = "card-stacked"
 
         var bookDetailDiv = document.createElement("div")
-        bookDetailDiv.className = "card-content"
+        bookDetailDiv.className = "card-content flow-text"
 
         var linkDiv = document.createElement("div")
-        linkDiv.className = "card-action"
+        linkDiv.className = "card-action center-align flow-text"
 
 
         // adds name of book title
@@ -192,7 +192,7 @@ var listTopSeller = function (data) {
         // adds link to book info which could also include review
 
         var bookInfoLink = document.createElement("a")
-        bookInfoLink.classList = "cyan darken-4"
+        bookInfoLink.classList = "cyan-text text-darken-4"
         bookInfoLink.textContent = "Book info";
         bookInfoLink.href = data[i].amazon_product_url;
         bookInfoLink.target = "_blank";
@@ -200,7 +200,7 @@ var listTopSeller = function (data) {
 
         var bookReviewLink = document.createElement("a")
         if (data[i].book_review_link != "") {
-            bookReviewLink.classList = "cyan darken-4"
+            bookReviewLink.classList = "cyan-text text-darken-4"
             bookReviewLink.textContent = "Book review";
             bookReviewLink.href = data[i].book_review_link;
             bookReviewLink.target = "_blank";

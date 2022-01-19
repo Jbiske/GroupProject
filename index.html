@@ -30,19 +30,19 @@
                 </a>
             </div>
         </nav>
-        <!-- </div> -->
+        <div class="hero">
+            <img src="assets/images/hero1.jpeg" class="responsive-img" />
+        </div>
     </header>
 
     <main>
         <div class="container">
             <!-- Hero Image -->
-            <div class="hero">
-                <img src="assets/images/hero.jpg">
-            </div>
+            
             <!-- Search Bar -->
             <div>
                 <form action="" id="search-form">
-                    <h2>Book Search</h2>
+                    <h2 class="cyan-text text-darken-4">Book Search</h2>
                     <div class="row">
                         <input class="col s10" type="text" id="book" placeholder="Book Name...">
                         <button class="btn-large col s2" type="submit" id="searchBtn">
@@ -50,7 +50,6 @@
                     </div>
                 </form>
             </div>
-
             <!-- Search Results -->
             <div class="resultContainer row">
 
@@ -59,7 +58,7 @@
 
 
             <!-- Recent Searches -->
-            <div class="recentSearch">
+            <div class="recentSearch cyan-text text-darken-4">
                 <h2 class="header"> Recent Searches</h2>
 
 
@@ -70,20 +69,26 @@
 
             <!-- Popular Books -->
             <div class="col s12 m7 popularContainer">
-                <h2 class="header popularBookTitle">Popular Books</h2>
+                <h2 class="header popularBookTitle cyan-text text-darken-4">Popular Books</h2>
             </div>
 
-
+        </main>
             <!-- Footer -->
-            <footer>
-                <h3>About</h3>
-                <h3> FAQ</h3>
-                <h3> Contact us </h3>
-
-
+            <footer class="page-footer cyan darken-4">
+                <div class="container">
+                    <div class="row">
+                <div class="col s12 flow-text">
+                    <ul class="center-align">
+                        <a class="white-text" href="#!"><li>About</li></a>
+                        <a class="white-text" href="#!"><li>FAQ</li></a>
+                        <a class="white-text" href="#!"><li>Contact Us</li></a>
+                    </ul>
+                </div>
+            </div>
+            </div>
             </footer>
 
-    </main>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
