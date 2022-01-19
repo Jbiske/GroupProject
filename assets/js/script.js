@@ -192,13 +192,21 @@ var listTopSeller = function (data) {
         // adds link to book info which could also include review
 
         var bookInfoLink = document.createElement("a")
+        bookInfoLink.classList = "cyan darken-4"
+        bookInfoLink.textContent = "Book info";
+        bookInfoLink.href = data[i].amazon_product_url;
+        bookInfoLink.target = "_blank";
+
+
+        var bookReviewLink = document.createElement("a")
         if (data[i].book_review_link != "") {
-            bookInfoLink.classList = "cyan darken-4"
-            bookInfoLink.textContent = "Book review";
-            bookInfoLink.href = data[i].book_review_link;
-            bookInfoLink.target = "_blank";
+            bookReviewLink.classList = "cyan darken-4"
+            bookReviewLink.textContent = "Book review";
+            bookReviewLink.href = data[i].book_review_link;
+            bookReviewLink.target = "_blank";
             console.log(data[i].book_review_link);
         }
+
 
         // adds book's image
         var bookImg = document.createElement("img")
@@ -211,7 +219,8 @@ var listTopSeller = function (data) {
         bookDiv.appendChild(bookImg);
         bookDiv.appendChild(bookContentDiv);
         bookContentDiv.appendChild(bookDetailDiv);
-        linkDiv.appendChild(bookInfoLink)
+        linkDiv.appendChild(bookInfoLink);
+        linkDiv.appendChild(bookReviewLink);
         bookContentDiv.appendChild(linkDiv);
 
         bookDetailDiv.appendChild(bookText);
@@ -233,8 +242,19 @@ resultContainer.addEventListener("click", function (event) {
         var linkValue = event.target.link;
         console.log(linkValue)
 
-        createSavedBooks(saveImg, linkValue)
-        saveClicked(saveImg, linkValue);
+        var existingImg = 0;
+        for (i = 0; i < savedBooks.length; i++) {
+            if (savedBooks[i].image == event.target.src) {
+                existingImg = 1;
+            }
+        }
+        if (existingImg == 1) {
+
+        }
+        else {
+            createSavedBooks(saveImg, linkValue)
+            saveClicked(saveImg, linkValue);
+        }
 
     }
 });
@@ -248,9 +268,19 @@ popularContainerEl.addEventListener("click", function (event) {
         var linkValue = event.target.link;
         console.log(linkValue)
 
-        createSavedBooks(saveImg, linkValue)
-        saveClicked(saveImg, linkValue);
+        var existingImg = 0;
+        for (i = 0; i < savedBooks.length; i++) {
+            if (savedBooks[i].image == event.target.src) {
+                existingImg = 1;
+            }
+        }
+        if (existingImg == 1) {
 
+        }
+        else {
+            createSavedBooks(saveImg, linkValue)
+            saveClicked(saveImg, linkValue);
+        }
     }
 });
 
