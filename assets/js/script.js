@@ -49,7 +49,7 @@ var listBooks = function (bookSearch) {
             console.log(bookName);
 
             var bookSearchDiv = document.createElement("div")
-            bookSearchDiv.classList = "card horizontal col small s6 m5 space"
+            bookSearchDiv.classList = "card horizontal col small s12 m5 l5"
 
             var bookSearchContentDiv = document.createElement("div")
             bookSearchContentDiv.className = "card-stacked"
@@ -81,7 +81,7 @@ var listBooks = function (bookSearch) {
 
             // adds book's image
             var bookImg = document.createElement("img")
-            bookImg.className = "card-image"
+            bookImg.className = "card-image responsive-img"
             if (totalBooks[i].cover_i) {
                 bookImg.src = "https://covers.openlibrary.org/b/id/" + totalBooks[i].cover_i + "-M.jpg";
                 bookImg.alt = "Image of " + bookName + " book";
@@ -164,14 +164,15 @@ var listTopSeller = function (data) {
 
     for (var i = 0; i < loopLength; i++) {
 
+
         var bookDiv = document.createElement("div")
-        bookDiv.classList = "card horizontal col small s6 m5 space"
+        bookDiv.classList = "card horizontal small hoverable"
 
         var bookContentDiv = document.createElement("div")
         bookContentDiv.className = "card-stacked"
 
         var bookDetailDiv = document.createElement("div")
-        bookDetailDiv.className = "card-content"
+        bookDetailDiv.className = "card-content center-align"
 
         var linkDiv = document.createElement("div")
         linkDiv.className = "card-action"
@@ -200,7 +201,7 @@ var listTopSeller = function (data) {
 
         // adds book's image
         var bookImg = document.createElement("img")
-        bookImg.className = "card-image"
+        bookImg.className = "card-image responsive-img"
         bookImg.src = data[i].book_image;
         bookImg.alt = "Image of " + data[i].title + " book";
 
