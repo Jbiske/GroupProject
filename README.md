@@ -26,6 +26,9 @@
 https://jbiske.github.io/Novel_Experiences/
 
 ---
+## Screenshot
+![screenshot](assets/images/NE-fullpage.png)
+
 ## Tools
 * HTML
 * CSS
@@ -37,8 +40,8 @@ https://jbiske.github.io/Novel_Experiences/
 ## Challenges
 * Materialize Framework
     * Responsiveness
-        * There were a few responsive misses with the materialize framework, that I used our own stylesheet to fix.
-        * The cards with the recent searches were not responsive.
+        * There were a few responsive misses with the materialize framework
+        * The images of save results are not responsive
 * Open Library API
     * From hitting search button to the results displaying, the load time is slow.
     * If a user clicks on a link, the open library website also takes time to load.
@@ -48,7 +51,9 @@ https://jbiske.github.io/Novel_Experiences/
 --- 
 ## Future Development Options
 * Wishlist
-    * cards are aligned in the center
-    * recent searches doesn't show copies of a search result if clicked on twice
     * Display reviews for every book on our website when the book is clicked on
+    * Speed up load time for links to external sites
+    * Create a forum where book readers can discuss books
+    * Create about, faq, and contact us pages
+
 
