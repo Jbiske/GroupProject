@@ -12,10 +12,8 @@ var searchBook = function (event) {
     event.preventDefault();
 
     var bookSearch = searchInput.value;
-    console.log(bookSearch);
     var apiURL = "https://openlibrary.org/search.json?limit=10&title=" + bookSearch;
 
-    console.log(apiURL);
     fetch(apiURL)
         .then(function (response) {
             if (response.ok) {
@@ -27,7 +25,8 @@ var searchBook = function (event) {
         })
         .catch(function (error) {
             // alert if something goes wrong
-            alert("There is an error with request");
+            resultContainer.textContent = "There is an error with request";
+
         });
 
     searchInput.value = "";
@@ -37,7 +36,7 @@ var searchBook = function (event) {
 // list the book results
 var listBooks = function (bookSearch) {
     resultContainer.textContent = "";
-    console.log(bookSearch);
+
     var totalBooks = bookSearch.docs
 
     // loop results to print in page
@@ -47,7 +46,7 @@ var listBooks = function (bookSearch) {
         // If statement is to check if they are books that provide info
         if (totalBooks[i].lending_edition_s) {
             var bookName = totalBooks[i].title;
-            console.log(bookName);
+
 
             var bookSearchDiv = document.createElement("div")
             bookSearchDiv.classList = "card horizontal col small s12 m12 l5"
@@ -78,7 +77,7 @@ var listBooks = function (bookSearch) {
             bookInfoLink.textContent = "Book info";
             bookInfoLink.href = "https://openlibrary.org" + totalBooks[i].key;
             bookInfoLink.target = "_blank";
-            console.log(totalBooks[i].key)
+
 
             // adds book's image
             var bookImg = document.createElement("img")
@@ -123,7 +122,7 @@ var popularbook = function () {
         })
         .catch(function (error) {
             // alert if something goes wrong
-            alert("There is an error with request");
+            popularContainerEl.textContent = "There is an error with request";
         });
 
 }
@@ -142,10 +141,8 @@ var randomTopSeller = function (bookType) {
                 response.json().then(function (data) {
                     var popularCategory = data.results.display_name;
                     var popularBook = data.results.books;
-                    console.log(popularCategory);
                     listTopSeller(popularBook);
                     popularTitle.textContent = "Top 5 " + popularCategory + " books";
-                    console.log(popularBook);
 
                 })
             }
@@ -153,7 +150,7 @@ var randomTopSeller = function (bookType) {
         })
         .catch(function (error) {
             // alert if something goes wrong
-            alert("There is an error with request");
+            popularContainerEl.textContent = "There is an error with request";
         });
 }
 var listTopSeller = function (data) {
@@ -204,7 +201,6 @@ var listTopSeller = function (data) {
             bookReviewLink.textContent = "Book review";
             bookReviewLink.href = data[i].book_review_link;
             bookReviewLink.target = "_blank";
-            console.log(data[i].book_review_link);
         }
 
 
@@ -235,12 +231,9 @@ searchEl.addEventListener("submit", searchBook);
 
 resultContainer.addEventListener("click", function (event) {
     if (event.target.matches("img")) {
-        console.log(event.target.parentNode);
         var saveImg = event.target.src;
-        console.log(saveImg)
 
         var linkValue = event.target.link;
-        console.log(linkValue)
 
         var existingImg = 0;
         for (i = 0; i < savedBooks.length; i++) {
@@ -261,12 +254,9 @@ resultContainer.addEventListener("click", function (event) {
 
 popularContainerEl.addEventListener("click", function (event) {
     if (event.target.matches("img")) {
-        console.log(event.target.parentNode);
         var saveImg = event.target.src;
-        console.log(saveImg)
 
         var linkValue = event.target.link;
-        console.log(linkValue)
 
         var existingImg = 0;
         for (i = 0; i < savedBooks.length; i++) {
